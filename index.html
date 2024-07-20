@@ -6,6 +6,15 @@
     <title>Document</title>
 </head>
 <body>
-    <include src="includes/header.html"></include>
+    
+    <div id="header"></div>
+
+    <script>
+
+        var header = document.getElementById("header");
+        header.innerHTML = fetch("/includes/header.html");
+
+    </script>
+
 </body>
 </html>
