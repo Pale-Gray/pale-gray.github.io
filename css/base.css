@@ -106,17 +106,6 @@ code {
 
 }
 
-@media screen and (max-width: 768px) {
-
-    .container {
-
-        margin: 0px;
-        width: 100%;
-
-    }
-
-}
-
 .content {
 
     position: relative;
@@ -305,5 +294,22 @@ code {
     background-color: darkgray;
 
     box-shadow: inset 0px 0px 10px 11px gray;
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .container {
+
+        margin: 0px;
+        width: 100%;
+
+    }
+
+    .dateinfo, .titleinfo {
+
+        font-size: calc((100vw / 768) * 16);
+
+    }
 
 }
