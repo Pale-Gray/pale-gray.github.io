@@ -284,3 +284,15 @@ code {
     opacity: 0.9;
 
 }
+
+.blogtext {
+
+    padding: 11px;
+
+    margin: 0px;
+
+    background-color: darkgray;
+
+    box-shadow: inset 0px 0px 10px 11px gray;
+
+}

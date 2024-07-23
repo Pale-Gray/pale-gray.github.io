@@ -84,7 +84,7 @@ def generate_recent_blog():
                 if (len(newest_blog) == 0):
                     template[idx] = line.replace("CONTENT", "<div style=\"text-align: center;\" class=\"information\"><p style=\"text-align: center;\" class=\"titleinfo\">" + "No blogs to show :(" + "</p></div><hr>")
                 else:
-                    template[idx] = line.replace("CONTENT", "<div class=\"information\"><p class=\"titleinfo\"><strong>" + file_names[recent_file_idx].split(".")[0].capitalize().replace("_", " ") + "</strong></p><p class=\"dateinfo\"><strong>" + str(datetime.fromtimestamp(pathf.getctime("resources/blogs/" + file_names[0])).strftime('%b %d, %Y at %I:%M%p').lstrip(" ").replace(" 0", " ")) + "</strong></p></div><hr>" + newest_blog)
+                    template[idx] = line.replace("CONTENT", "<div class=\"information\"><p class=\"titleinfo\"><strong>" + file_names[recent_file_idx].split(".")[0].capitalize().replace("_", " ") + "</strong></p><p class=\"dateinfo\"><strong>" + str(datetime.fromtimestamp(pathf.getctime("resources/blogs/" + file_names[0])).strftime('%b %d, %Y at %I:%M%p').lstrip(" ").replace(" 0", " ")) + "</strong></p></div><hr>" + "<div class=\"blogtext\">" + newest_blog + "</div>")
                 continue
             if line.find("FOOTER") != -1:
                 template[idx] = line.replace("FOOTER", open("includes/footer.html").read())
