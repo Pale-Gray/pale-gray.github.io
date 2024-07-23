@@ -29,18 +29,20 @@ def generate_recent_blog():
         newest_blog = marko.convert(newest_blog_md)
         # print(newest_blog)
         # print(newest_blog.find("<img src=\""))
-        source_start = newest_blog.find("<img src=\"") + len("<img src=\"")
-        src = ""
+        source_start = newest_blog.find("<img src=\"")
+
         letters = []
-        while newest_blog[source_start] != "\"":
-            letters.append(newest_blog[source_start])
-            source_start = source_start + 1
-        
-        src = src.join(letters)
-        # print(src)
-        addition = "resources/blogs/"
-        newest_blog = newest_blog.replace(src, addition + src)
-        
+
+        if (source_start != -1):
+            while newest_blog[source_start] != "\"":
+                letters.append(newest_blog[source_start])
+                source_start = source_start + 1
+
+        if (letters != []):
+            src = src.join(letters)
+            # print(src)
+            addition = "resources/blogs/"
+            newest_blog = newest_blog.replace(src, addition + src)
 
         output = open("blog.html", "w")
         template = open("includes/templaterecentblog.html", "r").readlines()
@@ -49,7 +51,10 @@ def generate_recent_blog():
                 template[idx] = line.replace("HEADER", open("includes/headerbloglist.html").read())
                 continue
             if line.find("CONTENT") != -1:
-                template[idx] = line.replace("CONTENT", "<div class=\"information\"><p class=\"titleinfo\">" + file_names[0].split(".")[0].capitalize().replace("_", " ") + "</p><p class=\"dateinfo\">" + str(datetime.fromtimestamp(pathf.getctime("resources/blogs/" + file_names[0])).strftime('%b %d, %Y at %I:%M%p').lstrip(" ").replace(" 0", " ")) + "</p></div><hr>" + newest_blog)
+                if (len(newest_blog) == 0):
+                    template[idx] = line.replace("CONTENT", "<div style=\"text-align: center;\" class=\"information\"><p style=\"text-align: center;\" class=\"titleinfo\">" + "No blogs to show :(" + "</p></div><hr>")
+                else:
+                    template[idx] = line.replace("CONTENT", "<div class=\"information\"><p class=\"titleinfo\">" + file_names[0].split(".")[0].capitalize().replace("_", " ") + "</p><p class=\"dateinfo\">" + str(datetime.fromtimestamp(pathf.getctime("resources/blogs/" + file_names[0])).strftime('%b %d, %Y at %I:%M%p').lstrip(" ").replace(" 0", " ")) + "</p></div><hr>" + newest_blog)
                 continue
             if line.find("FOOTER") != -1:
                 template[idx] = line.replace("FOOTER", open("includes/footer.html").read())

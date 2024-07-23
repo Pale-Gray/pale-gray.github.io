@@ -31,7 +31,16 @@ def make_bloglist_page():
 
     # print(links)
     links_str = " ".join(links)
-    if (len(file_names)) == 0:
+
+    is_empty = False
+
+    for string in [open("resources/blogsmd/" + f).read() for f in listdir("resources/blogsmd")]:
+        if (len(string) == 0):
+            is_empty = True
+        else:
+            is_empty = False
+
+    if is_empty:
         links_str = "<p style=\"text-align: center;\">There are currently no blogs.</p><hr>"
     else:
         links_str = template_start + links_str + template_end
@@ -50,5 +59,3 @@ def make_bloglist_page():
 
     output = open("bloglist.html", "w")
     output.writelines(bloglist)
-
-# make_bloglist_page()
