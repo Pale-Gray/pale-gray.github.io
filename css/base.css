@@ -88,15 +88,9 @@ code {
 
     margin: auto;
 
-    width:40%;
+    width:35%;
     height: 100%;
     background-color: transparent;
-
-}
-
-.container, .content, .header, .footer {
-
-    opacity: 0.95;
 
 }
 
@@ -118,10 +112,12 @@ code {
 
     box-shadow: inset 0px 0px 10px -5px black;
 
-    box-shadow: inset 0px 15px 15px -20px black,
-                inset 0px -15px 15px -20px black;
+    box-shadow: inset -15px 0px 8px -8px gray,
+                inset 15px 0px 8px -8px gray,
+                inset 0px 15px 15px -18px black,
+                inset 0px -15px 15px -18px black;
     /* background-color:  yellow; */
-    background-color: gray;
+    background-color: darkgray;
     
     width: 100%;
     min-height: 78%;
@@ -261,11 +257,31 @@ code {
 
 }
 
-p a, p a:link {
+.content p a {
 
-    background-color: revert !important;
-    color: revert !important;
-    margin: revert !important;
+    background: revert !important;
     padding: revert !important;
-    
+    border: revert !important;
+    margin: revert !important;
+    text-decoration: revert !important;
+    color: blue !important;
+
+}
+
+.content p a:active {
+
+    color: lightblue !important;
+
+}
+
+.container {
+
+    background-color: transparent;
+
+}
+
+.content, .header, .footer {
+
+    opacity: 0.9;
+
 }

@@ -26,7 +26,9 @@ def make_blog_page(filename):
             output.write("<div class=\"information\"><p class=\"titleinfo\"><strong>" + filename.split(".")[0].capitalize().replace("_", " ") + "</strong></p><p class=\"dateinfo\"><strong>" + str(datetime.fromtimestamp(pathf.getctime(file_io)).strftime('%b %d, %Y at %I:%M%p').lstrip(" ").replace(" 0", " ")) + "</strong></p></div>")
             continue
         if line.find("CONTENT") != -1:
+            output.write("<div class=\"blogtext\">")
             output.writelines(input_blog_text)
+            output.write("</div>")
             continue
         if line.find("FOOTER") != -1:
             output.write(open("includes/footer.html", "r").read())

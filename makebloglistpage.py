@@ -22,25 +22,27 @@ def make_bloglist_page():
 
     links = []
 
-    utc_offset_abbreviation = "UTC" + str(time.timezone /60 /60 * -1).split(".")[0]
+    # utc_offset_abbreviation = "UTC" + str(time.timezone /60 /60 * -1).split(".")[0]
+    paths_md = [pathf.join("resources/blogsmd/", f.split(".")[0] + ".md") for f in file_names]
+    print(paths_md)
 
     for idx, pathname in enumerate(paths):
-        # link = link_template.replace("LINK", pathname).replace("NAME", file_names[idx].split(".")[0].capitalize().replace("_", " ")).replace("DATE", " | Date posted: " + str(datetime.fromtimestamp(pathf.getctime(pathname)).strftime('%m/%d/%Y at %H:%M:%S')))
-        link = link_temp.replace("LINK", pathname).replace("NAME", file_names[idx].split(".")[0].capitalize().replace("_", " ")).replace("DATE", str(datetime.fromtimestamp(pathf.getctime(pathname)).strftime('%b %d, %Y %I:%M%p').lstrip(" ").replace(" 0", " ")))
-        links.append(link)
+        if (len(open(paths_md[idx]).read()) == 0):
+            paths[idx] = " "
 
-    # print(links)
+    print(paths)
+
+    for idx, pathname in enumerate(paths):
+        if (paths[idx] != " "):
+            # link = link_template.replace("LINK", pathname).replace("NAME", file_names[idx].split(".")[0].capitalize().replace("_", " ")).replace("DATE", " | Date posted: " + str(datetime.fromtimestamp(pathf.getctime(pathname)).strftime('%m/%d/%Y at %H:%M:%S')))
+            link = link_temp.replace("LINK", pathname).replace("NAME", file_names[idx].split(".")[0].capitalize().replace("_", " ")).replace("DATE", str(datetime.fromtimestamp(pathf.getctime(pathname)).strftime('%b %d, %Y %I:%M%p').lstrip(" ").replace(" 0", " ")))
+            links.append(link)
+
     links_str = " ".join(links)
 
     is_empty = False
 
-    for string in [open("resources/blogsmd/" + f).read() for f in listdir("resources/blogsmd")]:
-        if (len(string) == 0):
-            is_empty = True
-        else:
-            is_empty = False
-
-    if is_empty:
+    if len(links_str) == 0:
         links_str = "<p style=\"text-align: center;\">There are currently no blogs.</p><hr>"
     else:
         links_str = template_start + links_str + template_end
@@ -59,3 +61,5 @@ def make_bloglist_page():
 
     output = open("bloglist.html", "w")
     output.writelines(bloglist)
+
+##make_bloglist_page()
