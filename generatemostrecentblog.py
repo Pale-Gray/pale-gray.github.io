@@ -31,18 +31,24 @@ def generate_recent_blog():
         # print(newest_blog.find("<img src=\""))
         source_start = newest_blog.find("<img src=\"")
 
+        # print(source_start)
+
         letters = []
 
         if (source_start != -1):
+            source_start = source_start + len("<img src=\"")
             while newest_blog[source_start] != "\"":
                 letters.append(newest_blog[source_start])
                 source_start = source_start + 1
 
-        if (letters != []):
-            src = src.join(letters)
+        if (letters != None):
+            # print(letters)
+            src = "".join(letters)
             # print(src)
             addition = "resources/blogs/"
             newest_blog = newest_blog.replace(src, addition + src)
+
+        # print(addition + src)
 
         output = open("blog.html", "w")
         template = open("includes/templaterecentblog.html", "r").readlines()

@@ -260,3 +260,12 @@ code {
     background: linear-gradient(to right, darkgray, transparent)
 
 }
+
+p a, p a:link {
+
+    background-color: revert !important;
+    color: revert !important;
+    margin: revert !important;
+    padding: revert !important;
+    
+}
