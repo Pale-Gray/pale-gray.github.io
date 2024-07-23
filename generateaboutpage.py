@@ -15,7 +15,7 @@ def generate_aboutpage():
             template[idx] = header
             continue
         if line.find("INFORMATION") != -1:
-            template[idx] = marko.convert(open("resources/md/about.md").read())
+            template[idx] = "<div class=\"blogtext\">" + marko.convert(open("resources/md/about.md").read()) + "</div>"
             continue
         if line.find("FOOTER") != -1:
             template[idx] = footer
