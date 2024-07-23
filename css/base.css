@@ -112,12 +112,11 @@ code {
 
     box-shadow: inset 0px 0px 10px -5px black;
 
-    box-shadow: inset -15px 0px 8px -8px gray,
-                inset 15px 0px 8px -8px gray,
+    box-shadow: 
                 inset 0px 15px 15px -18px black,
                 inset 0px -15px 15px -18px black;
     /* background-color:  yellow; */
-    background-color: darkgray;
+    background-color: gray;
     
     width: 100%;
     min-height: 78%;
