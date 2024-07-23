@@ -78,7 +78,6 @@ code {
 
     padding: 2px 4px 2px 4px;
     border-radius: 4px;
-    /* box-shadow: inset 0px 0px 1px 0px white; */
 
     background-color: black;
     color: white;
@@ -97,7 +96,7 @@ code {
 
 .container, .content, .header, .footer {
 
-    opacity: 0.85;
+    opacity: 0.95;
 
 }
 
