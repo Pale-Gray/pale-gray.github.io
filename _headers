@@ -1,7 +1,7 @@
 https://pale-gray.github.io/
     Cache-Control: no-cache
 
-https://pale-gray.github.io
+https://pale-gray.github.io/*
     Cache-Control: no-cache
 
 /*
