@@ -23,7 +23,7 @@ def make_blog_page(filename):
             output.write(open("includes/headerblog.html", "r").read())
             continue
         if line.find("INFORMATION") != -1:
-            output.write("<div class=\"information\"><p class=\"titleinfo\">" + filename.split(".")[0].capitalize().replace("_", " ") + "</p><p class=\"dateinfo\">" + str(datetime.fromtimestamp(pathf.getctime(file_io)).strftime('%b %d, %Y at %I:%M%p').lstrip(" ").replace(" 0", " ")) + "</p></div>")
+            output.write("<div class=\"information\"><p class=\"titleinfo\"><strong>" + filename.split(".")[0].capitalize().replace("_", " ") + "</strong></p><p class=\"dateinfo\"><strong>" + str(datetime.fromtimestamp(pathf.getctime(file_io)).strftime('%b %d, %Y at %I:%M%p').lstrip(" ").replace(" 0", " ")) + "</strong></p></div>")
             continue
         if line.find("CONTENT") != -1:
             output.writelines(input_blog_text)
